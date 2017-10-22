@@ -30,6 +30,10 @@ One afternoon, in a sweet fall day, I decided my friends & I would do a game jam
 * Candies artwork from author Lumi Mae, found on OpenGameArt.org here: https://opengameart.org/content/candy-pack-1 and author's website here: https://lumimae.carbonmade.com/
 * Platform artwork from author Kenney, found on OpenGameArt.org here: https://opengameart.org/content/platformer-tiles and author's website here: http://www.kenney.nl/
 
+#### UI
+
+* Modern UI Pack v1.0 by Michsky, channel: https://www.youtube.com/c/michsky, pack video: https://www.youtube.com/watch?v=tI-jYv1X-Ro, google drive link: https://drive.google.com/drive/folders/0B5VB8XBg88YDdlZ5Yjc4UXFUUVU
+
 #### Music
 
 * "Patakas World" https://www.dl-sounds.com/royalty-free/patakas-world/
