@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DetectGamepads : MonoBehaviour {
+public class BoardManager : MonoBehaviour
+{
+
+    public List<Sprite> ListSprites; 
 
 	// Use this for initialization
 	void Start () {
@@ -13,4 +16,9 @@ public class DetectGamepads : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    public void SetupScene(int level)
+    {
+        
+    }
 }
