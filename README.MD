@@ -19,9 +19,21 @@ One afternoon, in a sweet fall day, I decided my friends & I would do a game jam
     * The hierarchy goes like this:  **GameManager --> BoardManager --> MazeManager, UIManager**
         * **singleton GameManager** creates a *BoardManager* instance 
             * **BoardManager** governs both *UI managment (UIManager)* and *maze managment (MazeManager)*
-                * **UIManager** responsibile for displaying panes, such as for textual updates, and one core responsibility it has is to recieve messages to showing in a particular message popup
+                * **UIManager** responsibile for displaying panes, such as for textual updates, and one core responsibility it has is to recieve messages to showing in a particular message popup. If UI anchors are insufficient, then code would govern UI element positions & scale, so this class would also detect resolution width & height and adjust them.
                 * **MazeManager** controls generation of layers of mazes, breaks down walls of overlapping paths. Also, controls which sprites are used for which maze elements, e.g. wall, etc.  At most, a completed maze gets passed back to the *"parent" BoardManager*
-                * **PlayerManager** handles detection of gamepads (in a method), and pushes these updates to the *UIManager* (somehow via messaging...)
+                * **GamepadManager** handles detection of gamepads (in a method), and pushes these updates to the *UIManager* (somehow via messaging...)
+                * **EventManager** handles passing messages around.
+    * _UI elements_ are in a canvas and consist of panels & buttons. At jam-creation time they are only absolutely positioned to get the ball rolling fast. 
+        * **UIExposure** provides a one-to-one mapping of methods to each _the screen's buttons_ (iterate design, later have multiple screens with different buttons, so maybe I'll do inner classes or an abstract interface that gets implemented by several child classes, or something else).
+* As a *design philosophy*, the bare minimum amount of controls will be added via drag-and-drop, pushing the majority of control of components & game objects into code instead. Exception will be UI elements, as they are unfamiliar since Unity 4.6 and this is just at a jam-pace.
+    * As another design philosophy, _tags_ will be uesd together with the call _GameObject.FindObjectWithTag("tag")_ to bridge the gap between code-instantitaion dependencies & Editor-created dependencies, such as for the _Canvas_ game object, as it is more efficient than brute-force searching all of Unity complete Game Object set with _Find_, and it preserves the ability to _create some things_ in-Editor, like the nested Canvas element structure... I doubt that's "worth" the effort of creating via code.
+* As a *styling guide*, any variable of the type GameObject but semantically is named another keyword, will be named with _Go_ appended to the end, like so: _anotherKeywordGo_. E.g. canvasGo.
+
+
+#### Legend
+* **Bold** is class name, used at beginning of bullets, and is followed in plaintext by a description of that class's responsibility. Ideally I'm striving for all definitions to completely true always.
+* *Emphasis* is often a class name or some key words in the design, and often appears later in the bullet as the subject of that sentence.
+
 
 ## Attributions (Asset Pool Collected)
 
@@ -52,3 +64,9 @@ One afternoon, in a sweet fall day, I decided my friends & I would do a game jam
 * "Slowdown" http://www.noiseforfun.com/2012-sound-effects/slowdown/
 * "Moving Block" http://www.noiseforfun.com/2013-sound-effects/moving-block/
 * "Spit" http://www.noiseforfun.com/2012-sound-effects/spit/ 
+
+
+## References
+
+* Unity UI - https://unity3d.com/learn/tutorials/topics/user-interface-ui/ui-canvas?playlist=17111
+* Unity messaging - https://www.youtube.com/watch?v=0AqG1fDhPT8 

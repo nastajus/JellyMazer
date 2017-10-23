@@ -8,6 +8,9 @@ public class GameManager : MonoBehaviour
 
     public static GameManager instance = null;      //static instance of game maanager which allows it be accessed by another script.
     private BoardManager boardManager;
+    private GamepadManager gamepadManager;
+    private EventManager eventManager;
+    private UIManager uiManager;
     private int level = 0;
 
 	void Awake () {
@@ -28,16 +31,26 @@ public class GameManager : MonoBehaviour
         //Sets this to not be destoryed when reloading scene
         DontDestroyOnLoad(gameObject);
 
-        //Get a component reference to the attached BoardManager script
-	    boardManager = GetComponent<BoardManager>();
+        //Add a component reference by attaching BoardManager script
+	    boardManager = gameObject.AddComponent<BoardManager>();
 
         //Call the InitGame function to initialize the first level
 	    InitGame();
+
 	}
 
     void InitGame()
     {
         boardManager.SetupScene(level);
+
+        eventManager = gameObject.AddComponent<EventManager>();
+
+        gamepadManager = gameObject.AddComponent<GamepadManager>();
+
+        uiManager = gameObject.AddComponent<UIManager>();
+
+        uiManager.SetupUIDepedencies();
+
     }
 
 }
