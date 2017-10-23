@@ -17,7 +17,7 @@ public class UIManager : MonoBehaviour
 
         //find references to buttons... ugh.
         canvasGo = GameObject.FindGameObjectWithTag("Canvas");
-        Button button1 = canvasGo.transform.Find("Button (1)").GetComponent<Button>();
+        Button button1 = canvasGo.transform.FindDeepChild("Button (1)").GetComponent<Button>();
         button1.onClick.AddListener(() =>
         {
              uiExposure.Button1();
